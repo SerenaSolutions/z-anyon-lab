@@ -7,6 +7,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run battery
         uses: ./
+      - name: QASM gate equivalence (declared bodies = exact B_R/B_S)
+        run: python3 quantum/qasm_equivalence.py
       - name: Sanity — commutator must not vanish
         run: |
           python3 - <<'EOF'
