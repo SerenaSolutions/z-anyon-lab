@@ -1,0 +1,23 @@
+name: self-test
+on: [push, pull_request]
+jobs:
+  anyon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run battery
+        uses: ./
+      - name: Sanity — commutator must not vanish
+        run: |
+          python3 - <<'EOF'
+          import json
+          r=json.load(open('${RUNNER_TEMP}/anyon_receipt.json')) if False else None
+          # direct re-check without depending on RUNNER_TEMP across steps:
+          import importlib.util, sys
+          spec=importlib.util.spec_from_file_location('al','anyon_lab.py')
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          out=m.battery()
+          assert out['verdict']=='NAO_ABELIANO_VERIFICADO', out['verdict']
+          assert out['commutator_L1']==6
+          print('sanity ok:',out['verdict'])
+          EOF
