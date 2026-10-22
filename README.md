@@ -31,3 +31,11 @@ Declared honestly: this is the S3 qutrit miniature — the logical primitive
 Exit code: `0` = verdict verified, `1` = REFUSED (job fails).
 
 Free forever, MIT. Part of the ZEPHIRUM product line: [zqea-verify](https://github.com/marketplace/actions/z-qea-receipt-verifier) (Marketplace), [zq-gate](https://github.com/SerenaSolutions/zq-gate), [zqea-seal](https://github.com/SerenaSolutions/zqea-seal).
+
+## Prova de conceito (hardware real)
+
+Palavras de trançado S3 `(B_R B_S)²` vs `(B_S B_R)²` divergem no hardware (01 vs 10): a ordem importa no silício. Job `dbcnp4s24mrc73ck0v80`.
+
+Recibo selado: [`poc/receipt_anyon_hw.json`](poc/receipt_anyon_hw.json) — verificável com `python3 zqea_verify.py poc/receipt_anyon_hw.json --strict-pq`.
+
+Bateria completa do confronto multilíngue (OpenQASM 3, Qiskit, Cirq, PennyLane, Braket, Q#): [SerenaSolutions/quantum-poc](https://github.com/SerenaSolutions/quantum-poc).
