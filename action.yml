@@ -1,0 +1,22 @@
+name: 'Z-Anyon Lab'
+description: 'Run the non-Abelian anyon braid battery (S3 qutrit) in CI — sealed Z-QEA receipt, nothing silent.'
+author: 'Serena Quantum Solutions'
+branding:
+  icon: 'zap'
+  color: 'purple'
+outputs:
+  verdict:
+    description: 'NAO_ABELIANO_VERIFICADO or REFUSED'
+    value: ${{ steps.anyon.outputs.verdict }}
+  seal:
+    description: 'SHA3-256 seal of the sealed receipt'
+    value: ${{ steps.anyon.outputs.seal }}
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Run non-Abelian anyon braid battery'
+      id: anyon
+      shell: bash
+      run: |
+        pip install --quiet numpy
+        python3 "${{ github.action_path }}/anyon_lab.py" "${{ runner.temp }}/anyon_receipt.json"
