@@ -1,6 +1,6 @@
 # Z-Anyon Lab
 
-![anyons](https://img.shields.io/badge/anyons-S3%20qutrit%20miniature-blue) ![license](https://img.shields.io/badge/license-MIT-blue)
+![anyons](https://img.shields.io/badge/anyons-S3%20qutrit%20miniature-blue) ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **Run the non-Abelian anyon braid battery in CI.** `NAO_ABELIANO_VERIFICADO` passes the job; anything else fails it. *Nothing executes silently.*
 
